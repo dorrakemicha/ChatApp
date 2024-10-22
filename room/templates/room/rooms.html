@@ -1,0 +1,29 @@
+{% extends 'chat/base.html' %}
+{% load static%}
+{% block title %}Rooms{% endblock %}
+
+{% block content %}
+<div  class="roomscontent">
+    <div>
+        <h1> Rooms </h1>
+    </div>
+
+    <div>
+        {% for room in rooms %}
+            <div>
+                <div class="roomcontent">
+                    <h2>{{ room.name }}</h2>
+                    <br>
+                    <button>
+                        <a id="joinbutton" href="{% url 'room' room.slug %}">Join</a>
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <a href="{% url 'create_room' %}">
+        <button id="newroom">Create a new room</button>
+    </a>
+</div>
+{% endblock %}
